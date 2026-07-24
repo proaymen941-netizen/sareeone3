@@ -594,19 +594,6 @@ export async function ensureTablesExist() {
         updated_at TIMESTAMP DEFAULT NOW() NOT NULL
       );
 
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS restaurant_id UUID REFERENCES restaurants(id);
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS type VARCHAR(50) DEFAULT 'per_km';
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS base_fee DECIMAL(10, 2) DEFAULT 0;
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS per_km_fee DECIMAL(10, 2) DEFAULT 0;
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS min_fee DECIMAL(10, 2) DEFAULT 0;
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS max_fee DECIMAL(10, 2) DEFAULT 1000;
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS free_delivery_threshold DECIMAL(10, 2) DEFAULT 0;
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS store_lat DECIMAL(10, 8);
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS store_lng DECIMAL(11, 8);
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS is_active BOOLEAN DEFAULT true;
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS created_at TIMESTAMP DEFAULT NOW();
-      ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT NOW();
-
       CREATE TABLE IF NOT EXISTS delivery_zones (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         name VARCHAR(100) NOT NULL,
@@ -618,11 +605,6 @@ export async function ensureTablesExist() {
         is_active BOOLEAN DEFAULT true NOT NULL,
         created_at TIMESTAMP DEFAULT NOW() NOT NULL
       );
-
-      ALTER TABLE delivery_zones ADD COLUMN IF NOT EXISTS min_distance DECIMAL(10, 2) DEFAULT 0;
-      ALTER TABLE delivery_zones ADD COLUMN IF NOT EXISTS max_distance DECIMAL(10, 2);
-      ALTER TABLE delivery_zones ADD COLUMN IF NOT EXISTS delivery_fee DECIMAL(10, 2);
-      ALTER TABLE delivery_zones ADD COLUMN IF NOT EXISTS estimated_time VARCHAR(50);
 
       CREATE TABLE IF NOT EXISTS financial_reports (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -827,36 +809,67 @@ export async function ensureTablesExist() {
         created_at TIMESTAMP DEFAULT NOW() NOT NULL,
         updated_at TIMESTAMP DEFAULT NOW() NOT NULL
       );
-
-      -- Create indexes for super-fast database queries
-      CREATE INDEX IF NOT EXISTS idx_orders_customer_id ON orders(customer_id);
-      CREATE INDEX IF NOT EXISTS idx_orders_driver_id ON orders(driver_id);
-      CREATE INDEX IF NOT EXISTS idx_orders_restaurant_id ON orders(restaurant_id);
-      CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
-      CREATE INDEX IF NOT EXISTS idx_orders_created_at ON orders(created_at DESC);
-
-      CREATE INDEX IF NOT EXISTS idx_menu_items_restaurant_id ON menu_items(restaurant_id);
-      CREATE INDEX IF NOT EXISTS idx_menu_items_category_id ON menu_items(category_id);
-      CREATE INDEX IF NOT EXISTS idx_menu_items_is_available ON menu_items(is_available);
-
-      CREATE INDEX IF NOT EXISTS idx_restaurants_category_id ON restaurants(category_id);
-      CREATE INDEX IF NOT EXISTS idx_restaurants_is_active ON restaurants(is_active);
-
-      CREATE INDEX IF NOT EXISTS idx_notifications_recipient ON notifications(recipient_type, recipient_id);
-      CREATE INDEX IF NOT EXISTS idx_notifications_is_read ON notifications(is_read);
-
-      CREATE INDEX IF NOT EXISTS idx_wasalni_customer_id ON wasalni_requests(customer_id);
-      CREATE INDEX IF NOT EXISTS idx_wasalni_driver_id ON wasalni_requests(driver_id);
-      CREATE INDEX IF NOT EXISTS idx_wasalni_status ON wasalni_requests(status);
-
-      CREATE INDEX IF NOT EXISTS idx_user_addresses_user_id ON user_addresses(user_id);
-      CREATE INDEX IF NOT EXISTS idx_system_settings_key ON system_settings(key);
-      CREATE INDEX IF NOT EXISTS idx_messages_order_id ON messages(order_id);
-      CREATE INDEX IF NOT EXISTS idx_drivers_status ON drivers(status);
-      CREATE INDEX IF NOT EXISTS idx_special_offers_active ON special_offers(is_active);
-      CREATE INDEX IF NOT EXISTS idx_cart_user_id ON cart(user_id);
-      CREATE INDEX IF NOT EXISTS idx_favorites_user_id ON favorites(user_id);
     `);
+
+    // Ensure columns are added safely
+    try {
+      await sql.unsafe(`
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS restaurant_id UUID REFERENCES restaurants(id);
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS type VARCHAR(50) DEFAULT 'per_km';
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS base_fee DECIMAL(10, 2) DEFAULT 0;
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS per_km_fee DECIMAL(10, 2) DEFAULT 0;
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS min_fee DECIMAL(10, 2) DEFAULT 0;
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS max_fee DECIMAL(10, 2) DEFAULT 1000;
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS free_delivery_threshold DECIMAL(10, 2) DEFAULT 0;
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS store_lat DECIMAL(10, 8);
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS store_lng DECIMAL(11, 8);
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS is_active BOOLEAN DEFAULT true;
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS created_at TIMESTAMP DEFAULT NOW();
+        ALTER TABLE delivery_fee_settings ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT NOW();
+
+        ALTER TABLE delivery_zones ADD COLUMN IF NOT EXISTS min_distance DECIMAL(10, 2) DEFAULT 0;
+        ALTER TABLE delivery_zones ADD COLUMN IF NOT EXISTS max_distance DECIMAL(10, 2);
+        ALTER TABLE delivery_zones ADD COLUMN IF NOT EXISTS delivery_fee DECIMAL(10, 2);
+        ALTER TABLE delivery_zones ADD COLUMN IF NOT EXISTS estimated_time VARCHAR(50);
+      `);
+    } catch (columnErr: any) {
+      console.warn("⚠️ Warning ensuring additional columns:", columnErr?.message || columnErr);
+    }
+
+    // Create indexes safely
+    try {
+      await sql.unsafe(`
+        CREATE INDEX IF NOT EXISTS idx_orders_customer_id ON orders(customer_id);
+        CREATE INDEX IF NOT EXISTS idx_orders_driver_id ON orders(driver_id);
+        CREATE INDEX IF NOT EXISTS idx_orders_restaurant_id ON orders(restaurant_id);
+        CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
+        CREATE INDEX IF NOT EXISTS idx_orders_created_at ON orders(created_at DESC);
+
+        CREATE INDEX IF NOT EXISTS idx_menu_items_restaurant_id ON menu_items(restaurant_id);
+        CREATE INDEX IF NOT EXISTS idx_menu_items_category ON menu_items(category);
+        CREATE INDEX IF NOT EXISTS idx_menu_items_is_available ON menu_items(is_available);
+
+        CREATE INDEX IF NOT EXISTS idx_restaurants_category_id ON restaurants(category_id);
+        CREATE INDEX IF NOT EXISTS idx_restaurants_is_active ON restaurants(is_active);
+
+        CREATE INDEX IF NOT EXISTS idx_notifications_recipient ON notifications(recipient_type, recipient_id);
+        CREATE INDEX IF NOT EXISTS idx_notifications_is_read ON notifications(is_read);
+
+        CREATE INDEX IF NOT EXISTS idx_wasalni_customer_id ON wasalni_requests(customer_id);
+        CREATE INDEX IF NOT EXISTS idx_wasalni_driver_id ON wasalni_requests(driver_id);
+        CREATE INDEX IF NOT EXISTS idx_wasalni_status ON wasalni_requests(status);
+
+        CREATE INDEX IF NOT EXISTS idx_user_addresses_user_id ON user_addresses(user_id);
+        CREATE INDEX IF NOT EXISTS idx_system_settings_key ON system_settings_table(key);
+        CREATE INDEX IF NOT EXISTS idx_messages_order_id ON messages(order_id);
+        CREATE INDEX IF NOT EXISTS idx_drivers_is_available ON drivers(is_available);
+        CREATE INDEX IF NOT EXISTS idx_special_offers_active ON special_offers(is_active);
+        CREATE INDEX IF NOT EXISTS idx_cart_user_id ON cart(user_id);
+        CREATE INDEX IF NOT EXISTS idx_favorites_user_id ON favorites(user_id);
+      `);
+    } catch (indexErr: any) {
+      console.warn("⚠️ Warning creating database indexes:", indexErr?.message || indexErr);
+    }
     console.log("✅ All database tables verified and created successfully.");
   } catch (err: any) {
     console.error("❌ Error ensuring database tables exist:", err?.message || err);
