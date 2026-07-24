@@ -1,0 +1,424 @@
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(222.2 84% 4.9%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(222.2 84% 4.9%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(222.2 84% 4.9%);
+  --primary: hsl(18 90% 50%); /* Saree One orange-red */
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(18 75% 15%); /* Saree One dark warm */
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(18 15% 96%);
+  --muted-foreground: hsl(18 8% 46%);
+  --accent: hsl(18 90% 50%);
+  --accent-foreground: hsl(18 75% 15%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(210 40% 98%);
+  --border: hsl(18 20% 91%);
+  --input: hsl(18 20% 91%);
+  --ring: hsl(18 90% 50%);
+  --chart-1: hsl(18 90% 50%);
+  --chart-2: hsl(18 75% 15%);
+  --chart-3: hsl(25 90% 58%);
+  --chart-4: hsl(12 88% 55%);
+  --chart-5: hsl(18 50% 30%);
+  --sidebar: hsl(18 8% 97%);
+  --sidebar-foreground: hsl(18 50% 8%);
+  --sidebar-primary: hsl(18 90% 50%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(18 40% 96%);
+  --sidebar-accent-foreground: hsl(18 90% 50%);
+  --sidebar-border: hsl(18 25% 90%);
+  --sidebar-ring: hsl(18 90% 50%);
+  --font-sans: 'Inter', 'Noto Sans Arabic', sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.75rem;
+  --shadow-2xs: 0px 2px 0px 0px hsl(18 90% 50% / 0.00);
+  --shadow-xs: 0px 2px 0px 0px hsl(18 90% 50% / 0.00);
+  --shadow-sm: 0px 2px 0px 0px hsl(18 90% 50% / 0.00), 0px 1px 2px -1px hsl(18 90% 50% / 0.00);
+  --shadow: 0px 2px 0px 0px hsl(18 90% 50% / 0.00), 0px 1px 2px -1px hsl(18 90% 50% / 0.00);
+  --shadow-md: 0px 2px 0px 0px hsl(18 90% 50% / 0.00), 0px 2px 4px -1px hsl(18 90% 50% / 0.00);
+  --shadow-lg: 0px 2px 0px 0px hsl(18 90% 50% / 0.00), 0px 4px 6px -1px hsl(18 90% 50% / 0.00);
+  --shadow-xl: 0px 2px 0px 0px hsl(18 90% 50% / 0.00), 0px 8px 10px -1px hsl(18 90% 50% / 0.00);
+  --shadow-2xl: 0px 2px 0px 0px hsl(18 90% 50% / 0.00);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: hsl(18 60% 8%);
+  --foreground: hsl(210 40% 98%);
+  --card: hsl(18 55% 10%);
+  --card-foreground: hsl(210 40% 98%);
+  --popover: hsl(18 55% 10%);
+  --popover-foreground: hsl(210 40% 98%);
+  --primary: hsl(18 90% 50%);
+  --primary-foreground: hsl(18 75% 15%);
+  --secondary: hsl(18 50% 20%);
+  --secondary-foreground: hsl(210 40% 98%);
+  --muted: hsl(18 40% 18%);
+  --muted-foreground: hsl(18 15% 65%);
+  --accent: hsl(18 90% 50%);
+  --accent-foreground: hsl(18 75% 15%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(210 40% 98%);
+  --border: hsl(18 40% 20%);
+  --input: hsl(18 40% 20%);
+  --ring: hsl(18 90% 50%);
+  --chart-1: hsl(18 90% 50%);
+  --chart-2: hsl(18 60% 30%);
+  --chart-3: hsl(25 90% 58%);
+  --chart-4: hsl(12 88% 55%);
+  --chart-5: hsl(18 50% 30%);
+  --sidebar: hsl(18 55% 10%);
+  --sidebar-foreground: hsl(210 40% 98%);
+  --sidebar-primary: hsl(18 90% 50%);
+  --sidebar-primary-foreground: hsl(18 75% 15%);
+  --sidebar-accent: hsl(18 40% 18%);
+  --sidebar-accent-foreground: hsl(18 90% 50%);
+  --sidebar-border: hsl(18 40% 20%);
+  --sidebar-ring: hsl(18 90% 50%);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .hero-banner {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 50%, #1A0600 100%);
+  }
+
+  .gradient-header {
+    background: linear-gradient(135deg, #C73208 0%, #E03A0E 100%);
+  }
+
+  .logo-saree-one {
+    display: flex;
+    align-items: center;
+    font-weight: 900;
+  }
+
+  .logo-saree-one .primary {
+    color: #F97316;
+  }
+
+  .orange-gradient {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  }
+
+  .red-gradient {
+    background: linear-gradient(135deg, #F97316 0%, #C2410C 100%);
+  }
+
+  /* الشريط العلوي للجوال: تدرج برتقالي بلمسة كحلية لمطابقة الشعار */
+  .header-gradient {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 60%, #1A0600 130%);
+  }
+
+  .primary-gradient {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  }
+
+  .navy-gradient {
+    background: linear-gradient(135deg, #1A0600 0%, #240A00 50%, #1E293B 100%);
+  }
+
+  /* ── Splash Screen Animations ─────────────────────────────────── */
+  .splash-logo-enter {
+    animation: splashLogoEnter 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .splash-text-enter {
+    animation: splashFadeUp 0.8s ease-out 0.9s both;
+  }
+  .splash-button-enter {
+    animation: splashFadeUp 0.7s ease-out 1.2s both;
+  }
+  .splash-float {
+    animation: splashFloat 4s ease-in-out infinite;
+  }
+  .splash-speed-line {
+    animation: splashSpeedLine 1.6s ease-out infinite;
+  }
+  .splash-rotate-slow {
+    animation: splashRotate 18s linear infinite;
+  }
+  .splash-rotate-reverse {
+    animation: splashRotate 28s linear infinite reverse;
+  }
+  .splash-rotate-medium {
+    animation: splashRotate 12s linear infinite;
+  }
+  .splash-rotate-fast {
+    animation: splashRotate 8s linear infinite reverse;
+  }
+  .splash-pulse-ring {
+    animation: splashPulseRing 3s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  .splash-shimmer {
+    background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,0.45) 50%, transparent 65%);
+    background-size: 200% 100%;
+    animation: splashShimmer 3s ease-in-out infinite;
+    mix-blend-mode: overlay;
+  }
+  .splash-particle {
+    animation: splashParticle 6s ease-in-out infinite;
+  }
+  .splash-twinkle {
+    animation: splashTwinkle 2.4s ease-in-out infinite;
+  }
+  .splash-ray {
+    animation: splashRayPulse 4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .splash-letter {
+    display: inline-block;
+    animation: splashLetterReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .splash-loading-dot {
+    animation: splashLoadingDot 1.4s ease-in-out infinite;
+  }
+  .splash-bg-mesh {
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(240,82,21,0.18) 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 70%, rgba(255,120,64,0.15) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 50%, rgba(240,82,21,0.10) 0%, transparent 55%);
+    animation: splashBgShift 14s ease-in-out infinite;
+  }
+
+  .brown-gradient {
+    background: linear-gradient(135deg, #8d6e63 0%, #5d4037 100%);
+  }
+
+  .fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .status-transition {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pulse-border {
+    animation: pulseBorder 2s infinite;
+  }
+
+  .floating-cart {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 50;
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes pulseBorder {
+  0% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(249, 115, 22, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+}
+
+/* ── Splash Screen Keyframes ─────────────────────────────────── */
+@keyframes splashLogoEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) translateY(40px);
+    filter: blur(8px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-4px);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes splashFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes splashSpeedLine {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-200%);
+    opacity: 0;
+  }
+}
+
+@keyframes splashRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes splashPulseRing {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.9;
+    border-width: 2px;
+  }
+  80% {
+    opacity: 0.05;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+@keyframes splashShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes splashParticle {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(15px, -25px) scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-10px, -45px) scale(0.8);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate(-25px, -15px) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes splashTwinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes splashRayPulse {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scaleY(0.85);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scaleY(1.15);
+  }
+}
+
+@keyframes splashLetterReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) rotate(-10deg) scale(0.6);
+    filter: blur(8px);
+  }
+  60% {
+    transform: translateY(-6px) rotate(2deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes splashLoadingDot {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes splashBgShift {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%, 0% 50%, 30% 70%;
+    filter: hue-rotate(15deg);
+  }
+}
+
+/* RTL specific styles */
+[dir="rtl"] .rtl\:space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Custom scrollbar for horizontal scrolling */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

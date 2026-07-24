@@ -1,0 +1,50 @@
+2026-07-21T22:32:34.506329889Z + ts-node@10.9.2
+2026-07-21T22:32:34.50633162Z + tsx@4.23.1
+2026-07-21T22:32:34.506333442Z + tw-animate-css@1.4.0
+2026-07-21T22:32:34.506335302Z + typescript@5.6.3
+2026-07-21T22:32:34.506337249Z + vaul@1.1.2
+2026-07-21T22:32:34.506339179Z + vite@5.4.21
+2026-07-21T22:32:34.50634137Z + vite-plugin-pwa@1.3.0
+2026-07-21T22:32:34.506343235Z + wouter@3.10.0
+2026-07-21T22:32:34.506345129Z + ws@8.21.1
+2026-07-21T22:32:34.506346933Z + zod@3.25.76
+2026-07-21T22:32:34.506348918Z + zod-validation-error@3.5.4
+2026-07-21T22:32:34.506350616Z 
+2026-07-21T22:32:34.50635274Z 769 packages installed [2.51s]
+2026-07-21T22:32:34.577958392Z $ bun x vite build && bun x esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outfile=dist/index.js
+2026-07-21T22:32:34.746249186Z vite v5.4.21 building for production...
+2026-07-21T22:32:35.008543212Z transforming...
+2026-07-21T22:32:36.263297272Z 
+2026-07-21T22:32:36.263334288Z warn - The class `duration-[10s]` is ambiguous and matches multiple utilities.
+2026-07-21T22:32:36.26335783Z warn - If this is content and not a class, replace it with `duration-&lsqb;10s&rsqb;` to silence this warning.
+2026-07-21T22:32:44.159302503Z ✓ 4246 modules transformed.
+2026-07-21T22:32:44.789618132Z rendering chunks...
+2026-07-21T22:32:45.542257498Z computing gzip size...
+2026-07-21T22:32:45.590017593Z ../dist/public/index.html                                     2.84 kB │ gzip:   1.29 kB
+2026-07-21T22:32:45.590044675Z ../dist/public/assets/wasel-logo-Bn9o8Cup.png             2,936.77 kB
+2026-07-21T22:32:45.590054997Z ../dist/public/assets/index-DldSPxT9.css                    159.70 kB │ gzip:  28.26 kB
+2026-07-21T22:32:45.590183503Z ../dist/public/assets/purify.es-Jn2rvFN8.js                  28.91 kB │ gzip:  10.90 kB
+2026-07-21T22:32:45.590223804Z ../dist/public/assets/jspdf.plugin.autotable-BncHC3jX.js     30.99 kB │ gzip:   9.88 kB
+2026-07-21T22:32:45.590244815Z ../dist/public/assets/index.es-BMYlYie0.js                  150.73 kB │ gzip:  51.57 kB
+2026-07-21T22:32:45.590357883Z ../dist/public/assets/html2canvas.esm-CBrSDip1.js           201.42 kB │ gzip:  48.03 kB
+2026-07-21T22:32:45.590375619Z ../dist/public/assets/jspdf.es.min-D4w7DSjb.js              390.44 kB │ gzip: 128.77 kB
+2026-07-21T22:32:45.590392731Z ../dist/public/assets/index-BvxDsSiz.js                   2,131.08 kB │ gzip: 564.88 kB
+2026-07-21T22:32:45.59047191Z 
+2026-07-21T22:32:45.590474502Z (!) Some chunks are larger than 1500 kB after minification. Consider:
+2026-07-21T22:32:45.590476591Z - Using dynamic import() to code-split the application
+2026-07-21T22:32:45.590478679Z - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2026-07-21T22:32:45.590480223Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+2026-07-21T22:32:45.590720308Z ✓ built in 10.82s
+2026-07-21T22:32:45.706852959Z 
+2026-07-21T22:32:45.706868986Z   dist/index.js  645.4kb
+2026-07-21T22:32:45.706870592Z 
+2026-07-21T22:32:45.70687205Z ⚡ Done in 13ms
+2026-07-21T22:32:45.734376097Z $ NODE_ENV=production node dist/index.js
+2026-07-21T22:32:45.948701422Z 🗺️ Using PostgreSQL database connection...
+2026-07-21T22:32:45.949286927Z 🔗 DATABASE_URL exists: true
+2026-07-21T22:32:45.973661697Z 10:32:45 PM [express] 🌱 Seeding database with default data...
+2026-07-21T22:32:45.974008356Z 🌱 Starting database seeding...
+2026-07-21T22:32:47.527351111Z ✓ Database already seeded, skipping initial data...
+2026-07-21T22:32:47.581795771Z ✅ Database connection verified successfully at 10:32:47 PM
+2026-07-21T22:32:47.650962991Z 10:32:47 PM [express] ⏰ تم تشغيل مؤقت الطلبات المجدولة
+2026-07-21T22:32:47.652268499Z 10:32:47 PM [express] serving on port 10000

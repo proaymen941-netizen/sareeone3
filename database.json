@@ -1,0 +1,13 @@
+{
+  "dev": {
+    "driver": "pg",
+    "host": "localhost",
+    "database": "sareeonedb",
+    "user": "postgres",
+    "password": "password"
+  },
+  "prod": {
+    "driver": "pg",
+    "connectionString": "${DATABASE_URL}"
+  }
+}

@@ -1,0 +1,50 @@
+2026-07-21T07:14:19.651379772Z     server/db.ts:961:8:
+2026-07-21T07:14:19.651381128Z       961 │   async createOrderTracking(tracking: InsertOrderTracking): Promi...
+2026-07-21T07:14:19.651382437Z           ╵         ~~~~~~~~~~~~~~~~~~~
+2026-07-21T07:14:19.651383771Z 
+2026-07-21T07:14:19.654362429Z ▲ [WARNING] Import "createServer" will always be undefined because there is no matching export in "server/vite.ts" [import-is-undefined]
+2026-07-21T07:14:19.6543761Z 
+2026-07-21T07:14:19.654378535Z     server/vite.ts:32:32:
+2026-07-21T07:14:19.654380249Z       32 │   const viteServer = await vite.createServer({
+2026-07-21T07:14:19.654381555Z          ╵                                 ~~~~~~~~~~~~
+2026-07-21T07:14:19.654382684Z 
+2026-07-21T07:14:19.659200079Z 2 warnings
+2026-07-21T07:14:19.659213138Z 
+2026-07-21T07:14:19.659215455Z   dist/index.js  649.1kb
+2026-07-21T07:14:19.659216764Z 
+2026-07-21T07:14:19.6592182Z ⚡ Done in 15ms
+2026-07-21T07:14:19.689549873Z $ NODE_ENV=production node dist/index.js
+2026-07-21T07:14:20.033517049Z 🗺️ Using PostgreSQL database connection...
+2026-07-21T07:14:20.037613382Z 🔗 DATABASE_URL exists: true
+2026-07-21T07:14:20.058009107Z 7:14:20 AM [express] 🌱 Seeding database with default data...
+2026-07-21T07:14:20.058245802Z 🌱 Starting database seeding...
+2026-07-21T07:14:20.619835184Z ✅ Database connection verified successfully at 7:14:20 AM
+2026-07-21T07:14:20.656669274Z ✓ Database already seeded, skipping initial data...
+2026-07-21T07:14:20.772714882Z 7:14:20 AM [express] ⏰ تم تشغيل مؤقت الطلبات المجدولة
+2026-07-21T07:14:20.773525834Z 7:14:20 AM [express] serving on port 10000
+2026-07-21T07:19:20.718623634Z ✅ Database connection verified successfully at 7:19:20 AM
+2026-07-21T07:24:20.69895528Z ✅ Database connection verified successfully at 7:24:20 AM
+2026-07-21T07:29:20.67428979Z ✅ Database connection verified successfully at 7:29:20 AM
+2026-07-21T07:34:20.739633297Z ✅ Database connection verified successfully at 7:34:20 AM
+2026-07-21T07:39:20.78117839Z ✅ Database connection verified successfully at 7:39:20 AM
+2026-07-21T07:44:20.791963608Z ✅ Database connection verified successfully at 7:44:20 AM
+2026-07-21T07:49:20.76357935Z ✅ Database connection verified successfully at 7:49:20 AM
+2026-07-21T07:54:20.835051885Z ✅ Database connection verified successfully at 7:54:20 AM
+2026-07-21T07:59:20.833191441Z ✅ Database connection verified successfully at 7:59:20 AM
+2026-07-21T08:04:20.869208597Z ✅ Database connection verified successfully at 8:04:20 AM
+2026-07-21T08:09:20.938123441Z ✅ Database connection verified successfully at 8:09:20 AM
+2026-07-21T08:14:20.964618655Z ✅ Database connection verified successfully at 8:14:20 AM
+2026-07-21T08:19:20.983286714Z ✅ Database connection verified successfully at 8:19:20 AM
+2026-07-21T08:24:20.936328681Z ✅ Database connection verified successfully at 8:24:20 AM
+2026-07-21T08:29:20.962130172Z ✅ Database connection verified successfully at 8:29:20 AM
+2026-07-21T08:34:21.056633591Z ✅ Database connection verified successfully at 8:34:21 AM
+2026-07-21T08:39:21.033531686Z ✅ Database connection verified successfully at 8:39:21 AM
+2026-07-21T08:44:21.046557674Z ✅ Database connection verified successfully at 8:44:21 AM
+2026-07-21T08:49:21.083127093Z ✅ Database connection verified successfully at 8:49:21 AM
+2026-07-21T08:54:21.155732736Z ✅ Database connection verified successfully at 8:54:21 AM
+2026-07-21T08:59:21.129315451Z ✅ Database connection verified successfully at 8:59:21 AM
+2026-07-21T09:04:21.197924794Z ✅ Database connection verified successfully at 9:04:21 AM
+2026-07-21T09:09:21.240286252Z ✅ Database connection verified successfully at 9:09:21 AM
+2026-07-21T09:13:59.063623375Z error: script "start" was terminated by signal SIGTERM (Polite quit request)
+2026-07-21T09:13:59.081865556Z ==> Build failed 😞
+2026-07-21T09:13:59.08188213Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys

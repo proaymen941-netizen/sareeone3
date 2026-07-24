@@ -1,0 +1,6 @@
+{
+  "name": "Sareone",
+  "description": "A comprehensive delivery and ordering platform with a React frontend, Express backend, and PostgreSQL database integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

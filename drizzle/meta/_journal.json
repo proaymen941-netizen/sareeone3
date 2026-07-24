@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1757465445939,
+      "tag": "0000_foamy_speed_demon",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1757465445940,
+      "tag": "0001_reflective_fabian_cortez",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1757465445941,
+      "tag": "0002_add_advanced_features",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1757465445942,
+      "tag": "0003_delivery_fee_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1757465445943,
+      "tag": "0004_add_offers_fields",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1757465445944,
+      "tag": "0005_add_favorites_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1757465445945,
+      "tag": "0006_add_missing_tables",
+      "breakpoints": true
+    }
+  ]
+}

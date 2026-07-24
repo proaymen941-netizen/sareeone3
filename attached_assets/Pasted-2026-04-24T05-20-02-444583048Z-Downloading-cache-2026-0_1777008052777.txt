@@ -1,0 +1,44 @@
+2026-04-24T05:20:02.444583048Z ==> Downloading cache...
+2026-04-24T05:20:02.48010272Z ==> Cloning from https://github.com/proaymen941-netizen/saree1
+2026-04-24T05:20:03.34229672Z ==> Checking out commit 749a7c2b05d4e7d967c40ecb3de4fa428df48cdf in branch main
+2026-04-24T05:20:09.678797335Z ==> Downloaded 252MB in 2s. Extraction took 5s.
+2026-04-24T05:20:16.69475108Z ==> Using Node.js version 22.16.0 (default)
+2026-04-24T05:20:16.719149353Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2026-04-24T05:20:16.829271245Z ==> Running build command 'npm install; npm run build'...
+2026-04-24T05:20:18.590614678Z 
+2026-04-24T05:20:18.590638829Z up to date, audited 811 packages in 2s
+2026-04-24T05:20:18.590647549Z 
+2026-04-24T05:20:18.59066877Z 141 packages are looking for funding
+2026-04-24T05:20:18.59067276Z   run `npm fund` for details
+2026-04-24T05:20:18.626777234Z 
+2026-04-24T05:20:18.626797814Z 14 vulnerabilities (6 moderate, 8 high)
+2026-04-24T05:20:18.626801214Z 
+2026-04-24T05:20:18.626805205Z To address issues that do not require attention, run:
+2026-04-24T05:20:18.626807865Z   npm audit fix
+2026-04-24T05:20:18.626810375Z 
+2026-04-24T05:20:18.626812835Z To address all issues (including breaking changes), run:
+2026-04-24T05:20:18.626816015Z   npm audit fix --force
+2026-04-24T05:20:18.626818395Z 
+2026-04-24T05:20:18.626821645Z Run `npm audit` for details.
+2026-04-24T05:20:18.783075766Z 
+2026-04-24T05:20:18.783100857Z > rest-express@1.0.0 build
+2026-04-24T05:20:18.783105147Z > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outfile=dist/index.js
+2026-04-24T05:20:18.783109097Z 
+2026-04-24T05:20:19.002326038Z vite v5.4.21 building for production...
+2026-04-24T05:20:19.330555667Z transforming...
+2026-04-24T05:20:21.193209594Z 
+2026-04-24T05:20:21.193263135Z warn - The class `duration-[10s]` is ambiguous and matches multiple utilities.
+2026-04-24T05:20:21.193275055Z warn - If this is content and not a class, replace it with `duration-&lsqb;10s&rsqb;` to silence this warning.
+2026-04-24T05:20:22.400847823Z ✓ 1146 modules transformed.
+2026-04-24T05:20:22.405480172Z x Build failed in 3.38s
+2026-04-24T05:20:22.405679107Z error during build:
+2026-04-24T05:20:22.405696197Z [vite:asset] Could not load /opt/render/project/src/attached_assets/ChatGPT_Image_24_أبريل_2026،_07_12_29_ص_1777005957448.png (imported by client/src/components/SplashScreen.tsx): ENOENT: no such file or directory, open '/opt/render/project/src/attached_assets/ChatGPT_Image_24_أبريل_2026،_07_12_29_ص_1777005957448.png'
+2026-04-24T05:20:22.405708187Z     at async open (node:internal/fs/promises:633:25)
+2026-04-24T05:20:22.405712567Z     at async Object.readFile (node:internal/fs/promises:1237:14)
+2026-04-24T05:20:22.405718197Z     at async fileToBuiltUrl (file:///opt/render/project/src/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:20428:19)
+2026-04-24T05:20:22.405722298Z     at async Object.load (file:///opt/render/project/src/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:20328:17)
+2026-04-24T05:20:22.405727498Z     at async PluginDriver.hookFirstAndGetPlugin (file:///opt/render/project/src/node_modules/rollup/dist/es/shared/node-entry.js:22453:28)
+2026-04-24T05:20:22.405732528Z     at async file:///opt/render/project/src/node_modules/rollup/dist/es/shared/node-entry.js:21445:33
+2026-04-24T05:20:22.405736498Z     at async Queue.work (file:///opt/render/project/src/node_modules/rollup/dist/es/shared/node-entry.js:22681:32)
+2026-04-24T05:20:22.486060871Z ==> Build failed 😞
+2026-04-24T05:20:22.486079521Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys

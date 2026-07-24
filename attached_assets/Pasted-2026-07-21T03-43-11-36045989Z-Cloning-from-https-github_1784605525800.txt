@@ -1,0 +1,28 @@
+2026-07-21T03:43:11.36045989Z ==> Cloning from https://github.com/aymen37m37-droid/sareone3
+2026-07-21T03:43:11.932749025Z ==> Checking out commit 0a07d4f518c58373543741360ea53a9ac0a37a6e in branch main
+2026-07-21T03:43:13.370779222Z ==> Using Node.js version 20.18.0 via /opt/render/project/src/.node-version
+2026-07-21T03:43:13.370782937Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2026-07-21T03:43:13.370940352Z ==> Installing Node.js version 20.18.0...
+2026-07-21T03:43:14.275421082Z ==> Running build command 'npm install; npm run build'...
+2026-07-21T03:44:25.747336368Z npm error Exit handler never called!
+2026-07-21T03:44:25.747378664Z npm error This is an error with npm itself. Please report this error at:
+2026-07-21T03:44:25.747393356Z npm error   <https://github.com/npm/cli/issues>
+2026-07-21T03:44:25.747656054Z npm error A complete log of this run can be found in: /opt/render/.cache/_logs/2026-07-21T03_43_14_333Z-debug-0.log
+2026-07-21T03:44:25.863215643Z 
+2026-07-21T03:44:25.863233747Z > rest-express@1.0.0 build
+2026-07-21T03:44:25.863237548Z > npx vite build && npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outfile=dist/index.js
+2026-07-21T03:44:25.863239678Z 
+2026-07-21T03:44:29.802618635Z failed to load config from /opt/render/project/src/vite.config.ts
+2026-07-21T03:44:29.802815569Z error during build:
+2026-07-21T03:44:29.80281854Z Error: Cannot find package '/opt/render/project/src/node_modules/vite/index.js' imported from /opt/render/project/src/node_modules/.vite-temp/vite.config.ts.timestamp-1784605469799-08c006569b6d6.mjs
+2026-07-21T03:44:29.802820529Z     at legacyMainResolve (node:internal/modules/esm/resolve:215:26)
+2026-07-21T03:44:29.802822361Z     at packageResolve (node:internal/modules/esm/resolve:841:14)
+2026-07-21T03:44:29.802823743Z     at moduleResolve (node:internal/modules/esm/resolve:927:18)
+2026-07-21T03:44:29.802825303Z     at defaultResolve (node:internal/modules/esm/resolve:1169:11)
+2026-07-21T03:44:29.802826583Z     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:542:12)
+2026-07-21T03:44:29.802827819Z     at ModuleLoader.resolve (node:internal/modules/esm/loader:510:25)
+2026-07-21T03:44:29.802829108Z     at ModuleLoader.getModuleJob (node:internal/modules/esm/loader:239:38)
+2026-07-21T03:44:29.802830461Z     at ModuleWrap.<anonymous> (node:internal/modules/esm/module_job:96:40)
+2026-07-21T03:44:29.802831735Z     at link (node:internal/modules/esm/module_job:95:36)
+2026-07-21T03:44:29.857877162Z ==> Build failed 😞
+2026-07-21T03:44:29.857910573Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
