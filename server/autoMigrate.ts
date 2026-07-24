@@ -18,9 +18,12 @@ export async function ensureTablesExist() {
   }
 
   console.log("🛠️ Checking and ensuring database tables exist...");
+  const ssl = getSslOption(databaseUrl);
   const sql = postgres(databaseUrl, {
-    ssl: getSslOption(databaseUrl),
+    ssl: ssl || { rejectUnauthorized: false },
     max: 1,
+    connect_timeout: 30,
+    idle_timeout: 20,
   });
 
   try {

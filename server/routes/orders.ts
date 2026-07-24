@@ -185,6 +185,26 @@ router.post("/", async (req, res) => {
       } catch (feeError) {
         console.error("Error calculating delivery fee during order creation:", feeError);
       }
+    } else {
+      // لا يوجد موقع — استخدام الرسوم المحفوظة في الإعدادات كقيمة افتراضية
+      try {
+        const feeSettings = await storage.getDeliveryFeeSettings();
+        if (feeSettings) {
+          const settingsBaseFee = parseFloat(feeSettings.baseFee || '0');
+          if (settingsBaseFee > 0 && finalDeliveryFee === 0) {
+            // للإعداد الثابت نستخدم baseFee مباشرةً
+            if (feeSettings.type === 'fixed') {
+              finalDeliveryFee = settingsBaseFee;
+            } else if (feeSettings.type === 'per_km') {
+              // بدون موقع نستخدم الحد الأدنى على الأقل
+              const minFee = parseFloat(feeSettings.minFee || '0');
+              finalDeliveryFee = minFee > 0 ? minFee : settingsBaseFee;
+            }
+          }
+        }
+      } catch (settingsError) {
+        console.error("Error fetching delivery fee settings fallback:", settingsError);
+      }
     }
 
     // إنشاء رقم طلب فريد تسلسلي
